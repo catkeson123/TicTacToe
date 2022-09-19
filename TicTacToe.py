@@ -5,11 +5,12 @@
 
 
 from IPython.display import clear_output
+from random import randint
 
 
 # In[3]:
 
-
+# displays the game board
 def display_board(board):
     clear_output()
     print('Current game board:')
@@ -22,7 +23,7 @@ def display_board(board):
 
 # In[4]:
 
-
+# returns a tuple representing the playrs choices for characters
 def player_choice():
     marker = ''
     
@@ -37,15 +38,12 @@ def player_choice():
 
 # In[5]:
 
-
+# places a marker on the board
 def place_marker(board, position, marker):
     board[position] = marker
 
 
 # In[6]:
-
-
-from random import randint
 
 # assigns who goes first
 def goes_first():  
@@ -57,14 +55,14 @@ def goes_first():
 
 # In[7]:
 
-
+# checks the if a space is full on the board
 def space_check(board, position):
     return board[position] == ' '
 
 
 # In[8]:
 
-
+# checks to see if either player has won
 def win_check(board,marker):
     return ((board[1] == marker and board[2] == marker and board[3] == marker) or
             (board[4] == marker and board[5] == marker and board[6] == marker) or
@@ -78,7 +76,7 @@ def win_check(board,marker):
 
 # In[9]:
 
-
+# checks to see if the board is full with no winner
 def full_board_check(board):
     for i in range(1,10):
         if space_check(board,i):
@@ -88,7 +86,7 @@ def full_board_check(board):
 
 # In[10]:
 
-
+# returns the players next choice in position
 def player_position(board):
     position = '0'
     accept_range = [1,2,3,4,5,6,7,8,9]
@@ -101,7 +99,7 @@ def player_position(board):
 
 # In[11]:
 
-
+# prompts the users to replay the game
 def replay():
     
     return input('Do you want to play again? Enter Yes or No: ').lower().startswith('y')
@@ -109,7 +107,7 @@ def replay():
 
 # In[12]:
 
-
+# checks to see if users are ready to play
 def ready_to_play():
     ready = ''
     
@@ -124,6 +122,7 @@ def ready_to_play():
 
 print ('Welcome to Tic Tac Toe!')
 
+# game logic
 while True:
     # sets the board
     board = [' ']*10
